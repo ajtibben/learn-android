@@ -67,7 +67,11 @@ public class MainActivity extends Activity
 						new InputStreamReader(is)
 					);
 					
-					inhoud.setText(reader.readLine());
+					MT940Builder b =new MT940Builder();
+					MT940Parser p = new MT940Parser(reader, b);
+					p.parseAll();
+					
+					inhoud.setText(b.builder.toString());
 					
 					reader.close();
 					/*
